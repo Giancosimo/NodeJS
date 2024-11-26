@@ -1,0 +1,12 @@
+{
+  "name": "callbackapi",
+  "version": "1.0.0",
+  "main": "CallbackAPI.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

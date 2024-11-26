@@ -1,0 +1,15 @@
+{
+  "name": "servertest",
+  "version": "1.0.0",
+  "main": "fromMars.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "node-modules": "^1.0.1"
+  }
+}
