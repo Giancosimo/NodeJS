@@ -1,6 +1,12 @@
 import express from "express";
 import morgan from "morgan";
-import { Request, Response } from "express";
+import {
+  getAll,
+  getOneById,
+  create,
+  updateById,
+  deleteById,
+} from "./controllers/planets";
 
 const app = express();
 app.use(express.json());
@@ -18,34 +24,14 @@ let planets = [
   { id: 2, name: "Saturn" },
 ];
 
-app.get("/api/planets", (req, res) => {
-  res.status(200).json(planets);
-});
-app.get("/api/planets/:id", (req, res) => {
-  res.status(200).json(planets);
-});
+app.get("/api/planets", getAll);
+app.get("/api/planets/:id", getOneById);
 
-app.post("/api/planets", (req, res) => {
-  const { id, name } = req.body;
-  const newPlanet = { id, name };
-  planets = [...planets, newPlanet];
+app.post("/api/planets", create);
 
-  res.status(201).json({ msg: "The planet was created!" });
-});
+app.put("/api/planets/:id", updateById);
 
-app.put("/api/planets/:id", (req, res) => {
-  const { id } = req.params;
-  const { name } = req.body;
-  planets = planets.map((p) => (p.id === Number(id) ? { ...p, name } : p));
-
-  res.status(200).json({ msg: "Planet updated!" });
-});
-
-app.delete("/api/planets/:id", (req: Request, res: Response) => {
-  const { id } = req.params;
-  planets = planets.filter((p) => p.id !== Number(id));
-  res.status(200).json({ msg: "Planet deleted!" });
-});
+app.delete("/api/planets/:id", deleteById);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Serving on https://Localhost:3000");
